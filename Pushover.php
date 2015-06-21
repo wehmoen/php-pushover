@@ -56,6 +56,13 @@ class Pushover
 	 */
 	private $_message;
 
+    /**
+     * Use HTML in Message
+     *
+     * @var string
+     */
+    private $_html;
+
 	/**
 	 * Timestamp in Unix timestamp format
 	 *
@@ -477,6 +484,7 @@ class Pushover
 				'callback' => $this->getCallback(),
 			  	'url' => $this->getUrl(),
 			  	'sound' => $this->getSound(),
+                'html' => $this->getHtml(),
 			  	'url_title' => $this->getUrlTitle()
 			));
 			$response = curl_exec($c);
@@ -490,5 +498,21 @@ class Pushover
 			}
 		}
 	}
+
+    /**
+     * @return string
+     */
+    public function getHtml()
+    {
+        return $this->_html;
+    }
+
+    /**
+     * @param string $html
+     */
+    public function setHtml($html)
+    {
+        $this->_html = $html;
+    }
 }
 ?>
